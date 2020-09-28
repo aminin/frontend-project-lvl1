@@ -2,6 +2,8 @@
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
   "description": "Brain Games",
+  "repository": "https://github.com/aminin/frontend-project-lvl1",
+  "license": "None",
   "main": "index.js",
   "bin": {
     "frontend-project-lvl1": "brain-games.js"
