@@ -2,21 +2,20 @@
   "name": "frontend-project-lvl1",
   "version": "1.0.0",
   "description": "Brain Games",
-  "repository": "https://github.com/aminin/frontend-project-lvl1",
-  "license": "None",
-  "main": "index.js",
-  "bin": {
-    "frontend-project-lvl1": "brain-games.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aminin/frontend-project-lvl1.git"
   },
-  "author": "",
   "license": "ISC",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
   "bugs": {
     "url": "https://github.com/aminin/frontend-project-lvl1/issues"
   },
