@@ -1,7 +1,7 @@
 ### Hexlet tests and linter status:
-![Actions Status](/workflows/hexlet-check/badge.svg)
+[![Actions Status](https://github.com/aminin/frontend-project-lvl1/workflows/hexlet-check/badge.svg)](https://github.com/aminin/frontend-project-lvl1)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-![ESLint](/workflows/lint/badge.svg)
+[![ESLint](https://github.com/aminin/frontend-project-lvl1/workflows/lint/badge.svg)](https://github.com/aminin/frontend-project-lvl1)
 
 ## Install
 
