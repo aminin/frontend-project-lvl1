@@ -10,11 +10,6 @@ class Progression extends Game {
     this.minStep = 1;
     this.maxStep = 20;
     this.size = 10;
-    this.ops = {
-      '+': (a, b) => (a + b),
-      '-': (a, b) => (a - b),
-      '*': (a, b) => (a * b),
-    };
     this.randomStart = random(this.minStart, this.maxStart);
     this.randomStep = random(this.minStep, this.maxStep);
   }
