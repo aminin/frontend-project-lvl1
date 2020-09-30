@@ -1,4 +1,6 @@
-import { greet, meet, say } from './cli.js';
+import {
+  greet, meet, say, trap,
+} from './cli.js';
 
 const run = (game) => {
   say('Welcome to the Brain Games!');
@@ -6,7 +8,7 @@ const run = (game) => {
   meet().then((name) => {
     greet(name);
     return game.playGame(name);
-  }).then(say);
+  }).then(say).catch(trap);
 };
 
 export default run;
