@@ -1,10 +1,5 @@
 #!/usr/bin/env node
-import { greet, meet, say } from '../src/cli.js';
-import playTheGame from '../src/even.js';
+import run from '../src/index.js';
+import Even from '../src/games/Even.js';
 
-say('Welcome to the Brain Games!');
-
-meet().then((name) => {
-  greet(name);
-  return playTheGame(name);
-}).then(say);
+run(new Even());
