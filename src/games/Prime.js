@@ -1,5 +1,4 @@
 import Even from './Even.js';
-import { random } from '../random.js';
 
 const isPrime = (a, b = 2) => {
   if (b ** 2 > a) return true;
@@ -10,9 +9,6 @@ class Prime extends Even {
   constructor() {
     super();
     this.description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-    this.minNumber = 0;
-    this.maxNumber = 100;
-    this.random = random(this.minNumber, this.maxNumber);
   }
 
   generateQuestion() {

@@ -1,18 +1,15 @@
-import Game from './Game.js';
-import { random, randomKey } from '../random.js';
+import Even from './Even.js';
+import { randomKey } from '../random.js';
 
-class Calc extends Game {
+class Calc extends Even {
   constructor() {
     super();
     this.description = 'What is the result of the expression?';
-    this.minNumber = 0;
-    this.maxNumber = 100;
     this.ops = {
       '+': (a, b) => (a + b),
       '-': (a, b) => (a - b),
       '*': (a, b) => (a * b),
     };
-    this.random = random(this.minNumber, this.maxNumber);
   }
 
   generateQuestion() {
