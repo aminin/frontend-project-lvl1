@@ -22,3 +22,7 @@
 ## Игра "Простое ли число?"
 
 [![Play the game Prime](images/prime.cast.gif)](https://asciinema.org/a/o9E8IpcHgk4cO1oZyY6qqDdDd)
+
+## Игра "НОД"
+
+[![Play the game GCD](images/gcd.cast.gif)](https://asciinema.org/a/jCIxWlrHOy7SDP4ZRzNMDBouj)
