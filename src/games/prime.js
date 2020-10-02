@@ -1,4 +1,4 @@
-import { withPredicate } from './even';
+import { withPredicate } from './even.js';
 
 const isPrime = (a, b = 2) => {
   if (b ** 2 > a) return true;
