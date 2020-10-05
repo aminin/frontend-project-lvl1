@@ -2,19 +2,17 @@ import promptly from 'promptly';
 
 const say = (p) => console.log(p);
 const ask = async (q) => promptly.prompt(q);
-const greet = (name) => say(`Hello, ${name}!`);
-const meet = () => ask('May I have your name?');
 const trap = (e) => console.log(e.message);
 
 export {
-  ask, greet, meet, say, trap,
+  ask, say, trap,
 };
 
 export default async () => {
   try {
     say('Welcome to the Brain Games!');
-    const name = await meet();
-    greet(name);
+    const name = await ask('May I have your name?');
+    say(`Hello, ${name}!`);
   } catch (e) {
     trap(e);
   }
