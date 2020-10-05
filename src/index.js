@@ -20,24 +20,27 @@ const gameResult = (name, rightAnswers, maxAnswers) => (rightAnswers >= maxAnswe
   ? `Congratulations, ${name}!`
   : `Let's try again, ${name}!`);
 
-const playGame = async (name, { generateQuestion, description, maxAnswers = 3 }) => {
+const playGame = async (name, { generateQA, description, maxAnswers = 3 }) => {
   let rightAnswers = 0;
   say(description);
   while (rightAnswers < maxAnswers) {
     // eslint-disable-next-line no-await-in-loop
-    if (!await askQuestion(...generateQuestion())) break;
+    if (!await askQuestion(...generateQA())) break;
     rightAnswers += 1;
   }
   return gameResult(name, rightAnswers, maxAnswers);
 };
 
-const run = (options) => {
-  say('Welcome to the Brain Games!');
-
-  meet().then((name) => {
+const run = async (options) => {
+  try {
+    say('Welcome to the Brain Games!');
+    const name = await meet();
     greet(name);
-    return playGame(name, options);
-  }).then(say).catch(trap);
+    const result = await playGame(name, options);
+    say(result);
+  } catch (e) {
+    trap(e);
+  }
 };
 
 export default run;

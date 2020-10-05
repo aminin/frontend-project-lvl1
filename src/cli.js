@@ -9,3 +9,13 @@ const trap = (e) => console.log(e.message);
 export {
   ask, greet, meet, say, trap,
 };
+
+export default async () => {
+  try {
+    say('Welcome to the Brain Games!');
+    const name = await meet();
+    greet(name);
+  } catch (e) {
+    trap(e);
+  }
+};

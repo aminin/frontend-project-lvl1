@@ -6,18 +6,20 @@ const ops = {
   '*': (a, b) => (a * b),
 };
 
-const description = 'What is the result of the expression?';
-
 const calc = (options = {}) => {
   const { minNumber = 0, maxNumber = 100 } = options;
-  const generateQuestion = () => {
-    const [a, b] = [random(minNumber, maxNumber), random(minNumber, maxNumber)];
+  const description = 'What is the result of the expression?';
+  const generateQA = () => {
+    const a = random(minNumber, maxNumber);
+    const b = random(minNumber, maxNumber);
     const op = randomKey(ops);
-    return [[a, op, b].join(' '), `${ops[op](a, b)}`];
+    const question = `${a} ${op} ${b}`;
+    const answer = `${ops[op](a, b)}`;
+    return [question, answer];
   };
   return {
     description,
-    generateQuestion,
+    generateQA,
     ...options,
   };
 };
