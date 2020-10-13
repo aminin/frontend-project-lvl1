@@ -2,7 +2,7 @@ import makeQAGenerator from '../makeQAGenerator.js';
 
 const isPrime = (number) => {
   if (number <= 1) return false;
-  for (let b = 2; b ** 2 < number; b += 1) {
+  for (let b = 2; b ** 2 <= number; b += 1) {
     if (number % b === 0) return false;
   }
   return true;
