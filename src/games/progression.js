@@ -5,17 +5,18 @@ const randomProgression = ({
 }) => {
   const start = random(minStart, maxStart);
   const step = random(minStep, maxStep);
-  return Array(size).fill(0).map((a, i) => start + i * step);
+  return [...Array(size).keys()].map((i) => start + i * step);
 };
 
-const progression = (options = {}) => {
-  const description = 'What number is missing in the progression?';
+const description = 'What number is missing in the progression?';
+
+const composeOptions = (options = {}) => {
   const generateQA = () => {
-    const prog = randomProgression(options);
-    const i = randomKey(prog);
-    const answer = `${prog[i]}`;
-    prog[i] = '..';
-    const question = prog.join(' ');
+    const progression = randomProgression(options);
+    const i = randomKey(progression);
+    const answer = progression[i];
+    progression[i] = '..';
+    const question = progression.join(' ');
     return [question, answer];
   };
   return {
@@ -25,4 +26,4 @@ const progression = (options = {}) => {
   };
 };
 
-export default progression;
+export default composeOptions;

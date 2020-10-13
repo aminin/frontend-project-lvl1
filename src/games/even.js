@@ -1,19 +1,13 @@
-import { random } from '../random.js';
+import makeQAGenerator from '../makeQAGenerator.js';
 
 const isEven = (n) => n % 2 === 0;
 
-export const makeQAGenerator = (predicate, { minNumber = 0, maxNumber = 100 }) => (
-  () => {
-    const question = random(minNumber, maxNumber);
-    const answer = ['no', 'yes'][+predicate(question)];
-    return [question, answer];
-  }
-);
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const even = (options = {}) => ({
-  description: 'Answer "yes" if the number is even, otherwise answer "no".',
+const composeOptions = (options = {}) => ({
+  description,
   generateQA: makeQAGenerator(isEven, options),
   ...options,
 });
 
-export default even;
+export default composeOptions;

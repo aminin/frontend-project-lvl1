@@ -1,30 +1,35 @@
-import { ask, say, trap } from './cli.js';
+import {
+  ask, say, trap, meetAndGreet,
+} from './cli.js';
 
-const playGame = async (name, { generateQA, description, maxAnswers = 3 }) => {
-  let rightAnswers = 0;
+const playGame = async (name, { generateQA, description, roundsLimit = 3 }) => {
+  let rightAnswersCount = 0;
+  const sayResult = () => say(rightAnswersCount === roundsLimit
+    ? `Congratulations, ${name}!`
+    : `Let's try again, ${name}!`);
   say(description);
-  while (rightAnswers < maxAnswers) {
+  const makeStep = async () => {
     const [question, correctAnswer] = generateQA();
     say(`Question: ${question}`);
-    // eslint-disable-next-line no-await-in-loop
     const answer = await ask('Your answer:');
     const isCorrect = answer.toLowerCase() === correctAnswer;
     say(isCorrect
       ? 'Correct!'
       : `"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    if (!isCorrect) break;
-    rightAnswers += 1;
-  }
-  return rightAnswers >= maxAnswers ? `Congratulations, ${name}!` : `Let's try again, ${name}!`;
+    rightAnswersCount += isCorrect;
+    if (isCorrect && rightAnswersCount < roundsLimit) {
+      makeStep();
+    } else {
+      sayResult();
+    }
+  };
+  makeStep();
 };
 
 const run = async (options) => {
   try {
-    say('Welcome to the Brain Games!');
-    const name = await ask('May I have your name?');
-    say(`Hello, ${name}!`);
-    const result = await playGame(name, options);
-    say(result);
+    const name = await meetAndGreet();
+    playGame(name, options);
   } catch (e) {
     trap(e);
   }
