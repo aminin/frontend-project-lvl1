@@ -15,7 +15,7 @@ const composeOptions = (options = {}) => {
     const b = random(minNumber, maxNumber);
     const op = randomKey(ops);
     const question = `${a} ${op} ${b}`;
-    const answer = ops[op](a, b);
+    const answer = ops[op](a, b).toString();
     return [question, answer];
   };
   return {

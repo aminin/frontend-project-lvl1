@@ -14,7 +14,7 @@ const composeOptions = (options = {}) => {
   const generateQA = () => {
     const progression = randomProgression(options);
     const i = randomKey(progression);
-    const answer = progression[i];
+    const answer = progression[i].toString();
     progression[i] = '..';
     const question = progression.join(' ');
     return [question, answer];

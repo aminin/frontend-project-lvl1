@@ -10,7 +10,7 @@ const composeOptions = (options = {}) => {
     const a = random(minNumber, maxNumber);
     const b = random(minNumber, maxNumber);
     const question = `${a} ${b}`;
-    const answer = findGCD(a, b);
+    const answer = findGCD(a, b).toString();
     return [question, answer];
   };
   return {
