@@ -10,20 +10,19 @@ const randomProgression = ({
 
 const description = 'What number is missing in the progression?';
 
-const composeOptions = (options = {}) => {
-  const generateQA = () => {
-    const progression = randomProgression(options);
-    const i = randomKey(progression);
-    const answer = progression[i].toString();
-    progression[i] = '..';
-    const question = progression.join(' ');
-    return [question, answer];
-  };
-  return {
-    description,
-    generateQA,
-    ...options,
-  };
+const generateQA = (options) => {
+  const progression = randomProgression(options);
+  const i = randomKey(progression);
+  const answer = progression[i].toString();
+  progression[i] = '..';
+  const question = progression.join(' ');
+  return [question, answer];
 };
+
+const composeOptions = (options = {}) => ({
+  description,
+  generateQA,
+  ...options,
+});
 
 export default composeOptions;

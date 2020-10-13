@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import run from '../src/index.js';
-import prime from '../src/games/prime.js';
+import composeOptions from '../src/games/prime.js';
 
-run(prime());
+run(composeOptions());

@@ -8,21 +8,19 @@ const ops = {
 
 const description = 'What is the result of the expression?';
 
-const composeOptions = (options = {}) => {
-  const { minNumber = 0, maxNumber = 100 } = options;
-  const generateQA = () => {
-    const a = random(minNumber, maxNumber);
-    const b = random(minNumber, maxNumber);
-    const op = randomKey(ops);
-    const question = `${a} ${op} ${b}`;
-    const answer = ops[op](a, b).toString();
-    return [question, answer];
-  };
-  return {
-    description,
-    generateQA,
-    ...options,
-  };
+const generateQA = ({ minNumber = 0, maxNumber = 100 }) => {
+  const a = random(minNumber, maxNumber);
+  const b = random(minNumber, maxNumber);
+  const op = randomKey(ops);
+  const question = `${a} ${op} ${b}`;
+  const answer = ops[op](a, b).toString();
+  return [question, answer];
 };
+
+const composeOptions = (options = {}) => ({
+  description,
+  generateQA,
+  ...options,
+});
 
 export default composeOptions;

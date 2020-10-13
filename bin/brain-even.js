@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import run from '../src/index.js';
-import even from '../src/games/even.js';
+import composeOptions from '../src/games/even.js';
 
-run(even());
+run(composeOptions());
