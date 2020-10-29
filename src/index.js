@@ -5,11 +5,8 @@ import {
 const playGame = async (name, options) => {
   const { generateQA, description, roundsLimit = 3 } = options;
   let rightAnswersCount = 0;
-  const sayResult = () => say(rightAnswersCount === roundsLimit
-    ? `Congratulations, ${name}!`
-    : `Let's try again, ${name}!`);
   say(description);
-  const makeStep = async () => {
+  while (rightAnswersCount < roundsLimit) {
     const [question, correctAnswer] = generateQA(options);
     say(`Question: ${question}`);
     const answer = await ask('Your answer:');
@@ -17,14 +14,12 @@ const playGame = async (name, options) => {
     say(isCorrect
       ? 'Correct!'
       : `"${answer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    rightAnswersCount += isCorrect;
-    if (isCorrect && rightAnswersCount < roundsLimit) {
-      makeStep();
-    } else {
-      sayResult();
-    }
-  };
-  makeStep();
+    if (!isCorrect) break;
+    rightAnswersCount += 1;
+  }
+  say(rightAnswersCount === roundsLimit
+    ? `Congratulations, ${name}!`
+    : `Let's try again, ${name}!`);
 };
 
 const run = async (options) => {
